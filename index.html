@@ -90,22 +90,6 @@
 			<a target="_blank" class="social-links" href="https://github.com/Lemonreds/hexo-theme-nayo">		
 				<i class="iconfont icon-Github">
 			</i></a>	
-	          	
-			<a target="_blank" class="social-links" href="https://weibo.com/liminghong2">		
-				<i class="iconfont icon-Weibo">
-			</i></a>	
-	          	
-			<a target="_blank" class="social-links" href="">		
-				<i class="iconfont icon-Facebook">
-			</i></a>	
-	          	
-			<a target="_blank" class="social-links" href="">		
-				<i class="iconfont icon-Instagram">
-			</i></a>	
-	          	
-			<a target="_blank" class="social-links" href="">		
-				<i class="iconfont icon-Neteasemusic">
-			</i></a>	
 	    
     	</div>		
 </div>
@@ -119,12 +103,17 @@
 	   
 	<div class="article-header">
 	    
-		<a class="article-title" href="/2018/12/04/z3逻辑推理/">无标题</a>  
+		<a class="article-title" href="/2018/12/04/java知识点总结/">java知识点总结</a>  
 	       
 		 
 
 		<div class="article-meta">
 			<time>12月 04, 2018</time>
+			
+				<span class="iconfont icon-star"></span>
+				            
+						<a class="article-tag" href="/tags/java/">java</a>           
+				
 			
 		</div>
 	</div>
@@ -134,52 +123,49 @@
 
     
 	<div class="typo article-excerpt">	
-		 
-			<h1 id="z3-逻辑推理"><a href="#z3-逻辑推理" class="headerlink" title="z3 逻辑推理"></a>z3 逻辑推理</h1><h2 id="python-接口配置"><a href="#python-接口配置" class="headerlink" title="python 接口配置"></a>python 接口配置</h2><ul>
-<li>下载<a href="https://github.com/Z3Prover/z3" target="_blank" rel="noopener">z3源码</a>使用vs编译（或者其它方式）</li>
-<li>下载release的文件，已经编译好，需要根据使用平台下载<a href="https://github.com/Z3Prover/z3/releases" target="_blank" rel="noopener">相应版本</a>；把<code>bin</code>目录的加入到环境变量中，在<code>python</code>目录下运行<code>python example.py</code>测试是否能使用z3接口。</li>
-</ul>
-<h2 id="z3-理论支持"><a href="#z3-理论支持" class="headerlink" title="z3 理论支持"></a>z3 理论支持</h2><p>z3实现了给出一系列约束自动求解的功能。比如在<code>example.py</code>里面：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> z3 <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">x = Real(<span class="string">'x'</span>)</span><br><span class="line">y = Real(<span class="string">'y'</span>)</span><br><span class="line">s = Solver()</span><br><span class="line">s.add(x + y &gt; <span class="number">5</span>, x &gt; <span class="number">1</span>, y &gt; <span class="number">1</span>)</span><br><span class="line">print(s.check())</span><br><span class="line">print(s.model())</span><br></pre></td></tr></table></figure>
-<p>定义了x,y两个实数变量以及约束条件<br>$$x + y &gt; 5, x &gt; 1, y &gt; 1$$<br><code>Solver</code>对象<code>s</code>用于求解x,y；<code>s.check()</code>检查是否可以分配实数给x,y满足这个约束；<code>s.model()</code>输出一种分配，即这个约束的一个解。<br>z3基于SMT(Satisfiability Modulo Theories)，这个理论大概意思是如果给定一些能使用一阶逻辑表达的约束条件/公式可以找到其自变量在定义域范围内的值使其为True，那么这些约束条件/这个公式就是可满足的(Satisfiable)。</p>
-<blockquote>
-<h3 id="Vilidability-amp-Satifiability"><a href="#Vilidability-amp-Satifiability" class="headerlink" title="Vilidability &amp; Satifiability"></a>Vilidability &amp; Satifiability</h3><p>如果一些约束/一个公式F的自变量在定义域范围内无论取什么值都为True，即F为永真式，那么F is Validable。如果F在定义域范围内存在一种分配使得F为True，那么F is satisfiable，如果不存在这样的分配（解），那么F is unsatisfiable。<br><strong> Validity is about finding a proof of a statement; satisfiability is about finding a solution to a set of constraints.</strong> Consider a formula F with some uninterpreted constants, say a and b. We can ask whether F is valid, that is whether it is always true for any combination of values for a and b. If F is always true, then not F is always false, and then not F will not have any satisfying assignment; that is, not F is unsatisfiable. That is, F is valid precisely when not F is not satisfiable (is unsatisfiable). From <a href="https://rise4fun.com/Z3/tutorial/guide" target="_blank" rel="noopener">Getting Started with Z3: A Guide</a><br>也就是要想证明F永真，证明非F永远为假，也就是非F永远找不到合适的分配，是不可满足的。</p>
-</blockquote>
-<h2 id="逻辑表达式的表示"><a href="#逻辑表达式的表示" class="headerlink" title="逻辑表达式的表示"></a>逻辑表达式的表示</h2><p>z3的python接口中所有的逻辑运算符都是函数，包括<code>Or()</code> <code>And()</code> <code>Not()</code> <code>Implies()</code> <code>If()</code>。<br>谓词可以使用函数来表示，谓词函数是一个返回布尔值的函数，在一阶逻辑中函数都是不解释(Uniterpreted)的，也就是函数具体是怎样不需要理会。在z3种定义一个谓词只需要定义输入类型即可，相当于声明一个函数，就可以直接用于推理了。函数可以具体定义表示变量之间的关系。</p>
-<blockquote>
-<h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><p>There are three rooms. Each contains either a lady or a tiger but not both. Furthermore,<br>one room contained a lady and the other two contained tigers. Each of the rooms has a<br>sign, and at most one of the three signs was true. The three signs are:</p>
-<ul>
-<li>Room I: A TIGER IS IN THIS ROOM.</li>
-<li>Room II: A LADY IS IN THIS ROOM.</li>
-<li>Room III: A TIGER IS IN ROOM II.<br>Which room contains the lady?</li>
-</ul>
-</blockquote>
-<p>命题：<br>lady in Room 1 表示为l1，同理用l2，l3表示剩下的两种结果。<br>tiger in Room 1 表示为t1，同理t2、t3表示老虎在Room2、3。<br>每个房间外面的sign等价于一个命题，使用已经定义的变量组合一下就使sign，所以这里定义的sign是一个引用。代码中使用r1表示Room1的sign。然后再solver中加入约束：</p>
-<ol>
-<li>每个房间中只有一个lady或者一只tiger。</li>
-<li>一个房间有lady另外两个有tiger。</li>
-<li>每个房间的标志至多只有一个是对的。</li>
-</ol>
-<p>表示出来以后这就是Knowledge Base。Solver会生成一种满足条件的分配。<br>要验证一个命题p是否与KB一致，“判断是否一致”指的是判断KB与命题是否一个语义蕴涵的关系(KB|=p)。如果这个蕴涵关系成立，那么命题的的否定<code>Not(p)</code>加入Solver中就无法得出一个分配，也就是说加入<code>Not(p)</code>以后Solver就无法分配值给命题使得约束条件（也就是KB）总为真，$ ¬p\bigwedge p$产生了矛盾，<code>s.check()</code>为unsat，也就是证明了这个命题基于这些约束条件是永真的。相反的，如果加入约束<code>Not(p)</code>能够有一个分配满足，那么说明p的解是False。</p>
-<blockquote>
-<h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><p>Given the following facts:</p>
-<ol>
-<li>Lisa is not next to Bob in the ranking</li>
-<li>Jim is ranked immediately ahead of a biology major</li>
-<li>Bob is ranked immediately ahead of Jim</li>
-<li>One of the women (Lisa and Mary) is a biology major</li>
-<li>One of the women is ranked first<br>What are possible rankings for the four people?</li>
-</ol>
-</blockquote>
-<p><strong>Example2</strong> 目的是求解（给出一种分配就可以了），这些解显然不是一个布尔值而是一个整数。在题目的描述中主要有两种关系：</p>
-<ol>
-<li>A紧挨B并且A排在B的前面。（ranked immediately ahead of）</li>
-<li>A是生物专业的。</li>
-</ol>
-<p>可以使用一个具体的函数表示第一种关系，第二种显然可以定义一个谓词，也就是定义一个Uniterpreted function。然后就可以通过逻辑连接词组成约束条件，Solver求解。</p>
-
+		
+			<p>2倍速刷一下java知识点<br>
 		  	  
+	</p></div>
+
+	<div class="article-bottom">
+		<a class="article-readmore" href="/2018/12/04/java知识点总结/">阅读更多</a> 	
+	</div>	
+    
+</article>     
+     	
+    	  	
+  		
+    			
+
+<article class="article">		
+	   
+	<div class="article-header">
+	    
+		<a class="article-title" href="/2018/12/04/z3逻辑推理/">z3逻辑推理</a>  
+	       
+		 
+
+		<div class="article-meta">
+			<time>12月 04, 2018</time>
+			
+				<span class="iconfont icon-star"></span>
+				            
+						<a class="article-tag" href="/tags/NPL-AI/">NPL AI</a>           
+				
+			
+		</div>
 	</div>
+
+
+	
+
+    
+	<div class="typo article-excerpt">	
+		
+			<p>原来MS有这个玩意<br>
+		  	  
+	</p></div>
 
 	<div class="article-bottom">
 		<a class="article-readmore" href="/2018/12/04/z3逻辑推理/">阅读更多</a> 	

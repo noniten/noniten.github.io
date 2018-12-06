@@ -1,0 +1,677 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  Java知识点总结 |   Noniten </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
+
+
+  <link rel="stylesheet" href="/nayo.min.css"> 
+</head>  
+  <body>   
+    
+      <header class="header">
+	
+  <nav class="header-inner">        
+
+    <span class="iconfont icon-menu mobile-toggle"></span>   	
+
+    <div class="header-logo">
+      <a href="/">
+        <img class="header-logo-img" src="/images/logo.png">
+      </a>
+    </div>
+
+    <div class="header-menu">          
+              
+          
+            <a class="header-menu-link" id="header-menu-home" href="/">
+              <i class="iconfont icon-home">  
+            </i></a>     
+          
+              
+          
+            <a class="header-menu-link" id="header-menu-archives" href="/archives">
+              <i class="iconfont icon-archives">  
+            </i></a>     
+          
+              
+          
+            <a class="header-menu-link" id="header-menu-tags" href="/tags">
+              <i class="iconfont icon-tags">  
+            </i></a>     
+          
+              
+          
+            <a class="header-menu-link" id="header-menu-about" href="/about">
+              <i class="iconfont icon-about">  
+            </i></a>     
+          
+              
+          
+              <a class="header-menu-link" id="header-menu-search">
+                <i class="iconfont icon-search">  
+              </i></a>
+          
+                  
+    </div>  
+    
+  </nav>
+</header>
+
+   
+
+      <div class="container">       
+          
+          
+            <div class="container-inner">  
+          
+
+          <article class="post">
+  
+	
+<div class="post-header">
+	<p class="post-title">	
+		java知识点总结
+	</p>
+
+	<div class="post-info">	
+		<span class="post-info-entry">
+			12月 04, 2018
+		</span>
+
+		
+		
+			<i class="iconfont icon-words"></i>
+			<span class="post-info-entry">12342
+			</span>
+		
+	</div>
+</div> 
+	
+ 
+
+	  <div class="typo post-content slideDownMin">
+
+		
+
+			
+					<p>2倍速刷一下java知识点<br><a id="more"></a></p>
+<h2 id="java变量定义作用域"><a href="#java变量定义作用域" class="headerlink" title="java变量定义作用域"></a>java变量定义作用域</h2><p>一对大括号内为作用域，作用域中的变量不能重复定义，离开作用域会被jvm回收<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//example 1</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        &#123;</span><br><span class="line">            String name=<span class="string">"Echo"</span>;</span><br><span class="line">            System.out.println(name);</span><br><span class="line">        &#125;</span><br><span class="line">        String name=<span class="string">"Reno"</span>;</span><br><span class="line">        System.out.println(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>example1 合法定义了两个name，一个在里面的大括号内，一个在外面</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//example 2</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String name=<span class="string">"Reno"</span>;</span><br><span class="line">        System.out.println(name);</span><br><span class="line">        &#123;</span><br><span class="line">            String name=<span class="string">"Echo"</span>;</span><br><span class="line">            System.out.println(name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>example2的定义是不合法的！这一点与c++不一样，java不存在内部定义域的同名变量覆盖（屏蔽）外部的机制，避免一些麻烦。</p>
+<hr>
+<h2 id="保留小数点后n位的计算"><a href="#保留小数点后n位的计算" class="headerlink" title="保留小数点后n位的计算"></a>保留小数点后n位的计算</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">double</span> res=Math.sqrt(<span class="number">15</span>);</span><br><span class="line">        <span class="keyword">double</span> res_1=Math.round(<span class="number">10</span>*res)/<span class="number">10.0</span>;<span class="comment">//右移n位取整再左移</span></span><br><span class="line">        System.out.println(res_1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Bytes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>1</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4</td>
+</tr>
+<tr>
+<td>long</td>
+<td>4</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+</tr>
+<tr>
+<td>char</td>
+<td>1</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>1 or 4</td>
+</tr>
+</tbody>
+</table>
+<p>boolean作为单个变量占用4bytes，作为数组中的元素占用1bytes。<br><strong> 基本数据类型有默认值，但仅作为类中属性时才生效。方法中声明定义基本数据类型一定要赋初值。</strong>  </p>
+<ul>
+<li><h5 id="int"><a href="#int" class="headerlink" title="int"></a>int</h5><ul>
+<li>long数据类型的字面值必须要有L作为后缀，否则编译器会指出语法错误，默认的整数字面值是整形。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> l=<span class="number">3000000000L</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h5 id="char"><a href="#char" class="headerlink" title="char"></a>char</h5><ul>
+<li>底层使用unicode编码，占16bits</li>
+</ul>
+</li>
+<li><h5 id="float-amp-double"><a href="#float-amp-double" class="headerlink" title="float &amp; double"></a>float &amp; double</h5><ul>
+<li><p>小数的字面值是double，要给float赋值，就要在字面值后面加f</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> f=<span class="number">5.3f</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>float: 1位符号位，8位指数位，23位尾数；精度23位，比int小（int精度31位），但可表示数的范围比int大（因为有指数位）</p>
+</li>
+<li>double：1位符号位，11位指数位，52位尾数；精度52为，比long小（long精度63位），但可表示的范围比long大。</li>
+<li>在机器中实数都是约数，所以浮点运算会有误差，尽量使用整型进行运算</li>
+<li>浮点数比较不要用==比较，而是使用一个精度范围值和两数的差比较（d1-d2<epsilon ==""> d1==d2)</epsilon></li>
+</ul>
+</li>
+</ul>
+<h4 id="栈空间"><a href="#栈空间" class="headerlink" title="栈空间"></a>栈空间</h4><ol>
+<li>FILO</li>
+<li>存取数据效率高，仅次于寄存器</li>
+<li>空间小，不能放大量数据</li>
+<li>jvm中基本数据类型存储在栈中<h3 id="引用数据类型、自定义类型"><a href="#引用数据类型、自定义类型" class="headerlink" title="引用数据类型、自定义类型"></a>引用数据类型、自定义类型</h3>String、HashSet、HashMap、StringBuffer等等，就是除了基本数据类型的类型（包括自己定义的类）<h4 id="堆空间"><a href="#堆空间" class="headerlink" title="堆空间"></a>堆空间</h4></li>
+<li>存储位置随机分配</li>
+<li>效率最低</li>
+<li>空间大</li>
+<li>jvm通过引用管理</li>
+</ol>
+<table><br>   <tr><br>      <td>特点</td><br>      <td>基本数据类型</td><br>      <td>引用数据类型</td><br>   </tr><br>   <tr><br>      <td>分配位置</td><br>      <td>栈</td><br>      <td>堆，速度慢</td><br>   </tr><br>   <tr><br>      <td>变量名指向的内容</td><br>      <td>具体的数值</td><br>      <td>一个内存（堆）上的地址（hash值）</td><br>   </tr><br>   <tr><br>      <td>变量声明</td><br>      <td>声明后立即分配存储空间</td><br>      <td>声明后指向一个内存地址，这个内存地址指向对象实体</td><br>   </tr><br>   <tr><br>      <td>使用赋值语句的效果</td><br>      <td>拷贝传递</td><br>      <td>引用传递</td><br>   </tr><br>   <tr><br>      <td>判断等价（==、!=）</td><br>      <td>直接使用关系运算符</td><br>      <td>如果直接使用关系运算符则是判断引用（即两个地址）是否相同，也就是两个引用是否指向同一块堆的内存空间。如果想判断对象实体是否等价要自己实现equals()方法，调用equals()判断</td><br>   </tr><br>   <tr><br>      <td>JVM</td><br>      <td>创建和销毁很快</td><br>      <td>依赖JVM回收</td><br>   </tr><br>   <tr><br>      <td></td><br>   </tr><br></table>
+
+<h3 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h3><p>8种基本数据类型都有自己的包装类，Integer、Long、Double……<br>作用：</p>
+<ol>
+<li>封装了实用的方法和常量，比如某种数据类型的最大和最小值<code>Integer.MAX_VALUE</code> <code>Integer.MIN_VALUE</code> <code>Integer.parseInt(String s)</code> <code>Integer.toBinaryString(int i)</code> <code>Integer.toHexString(int i)</code></li>
+<li>用来定义集合的类型</li>
+<li>如果数据返回空值，那么使用包装类比较好，包装类的变量名是一个引用，可以为null</li>
+</ol>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><ul>
+<li>小类型向大类型自动转换（jvm完成），<strong> int转浮点可能会丢失精度（“小类型”转“大类型”并不是万无一失） </strong><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i=<span class="number">0x1000001</span>;</span><br><span class="line"><span class="keyword">float</span> f=i;</span><br><span class="line">System.out.println(Integer.toBinaryString(i)+<span class="string">": "</span>+i);</span><br><span class="line">System.out.println(Integer.toBinaryString((<span class="keyword">int</span>)f)+<span class="string">": "</span>+f);</span><br><span class="line"><span class="comment">//i是28位，超过了float的精度，因此会丢失精度</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//output,丢失最后一位</span><br><span class="line">1000000000000000000000001: 16777217</span><br><span class="line">1000000000000000000000000: 1.6777216E7</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>大类型向小类型需要显式转换（强制转换），数据可能会被截断丢失信息，可能会转换符号</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span> b1=<span class="number">3</span>;</span><br><span class="line"><span class="keyword">byte</span> b2= (<span class="keyword">byte</span>) (b1+<span class="number">4</span>); <span class="comment">//int转byte要强转，因为b1+4在解释运行时才运算，按int类型操作</span></span><br><span class="line"><span class="keyword">byte</span> b3=<span class="number">6</span>+<span class="number">10</span>; <span class="comment">//编译器直接计算值存放在b3中，无需强转</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>int和char某些情况下可以自动相互转换，char在底层使用int表示,char可直接用于数值计算</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> b=<span class="number">65</span>;</span><br><span class="line"><span class="keyword">int</span> i=<span class="string">'B'</span>;</span><br><span class="line">System.out.println(b+<span class="string">" "</span>+i);</span><br><span class="line">System.out.println(b+<span class="number">1</span>); <span class="comment">//向上转为int</span></span><br><span class="line">System.out.println((<span class="keyword">char</span>)(b+<span class="number">1</span>)); <span class="comment">//向下转型要强制转换</span></span><br><span class="line"><span class="comment">//output：</span></span><br><span class="line"><span class="comment">//        A 66</span></span><br><span class="line"><span class="comment">//        66</span></span><br><span class="line"><span class="comment">//        B</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="控制台接收数据"><a href="#控制台接收数据" class="headerlink" title="控制台接收数据"></a>控制台接收数据</h2><p>使用System.in初始化Scanner类，常用方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>next()</td>
+<td>输入字符串，以空格分界</td>
+</tr>
+<tr>
+<td>nextLine()</td>
+<td>输入字符串，以换行分界</td>
+</tr>
+<tr>
+<td>nextInt()</td>
+<td>接收int数据</td>
+</tr>
+<tr>
+<td>nextDouble()</td>
+<td>接收double数据</td>
+</tr>
+<tr>
+<td>nextBoolean()</td>
+<td>接收boolean数据</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="实现swap？"><a href="#实现swap？" class="headerlink" title="实现swap？"></a>实现swap？</h2><p>众所周知，java里没有指针，java的函数只有值传递，值传递约等于赋值符号的功能。<br>赋值（=）：对于基本类型是覆盖原来的值，对于引用类型是覆盖引用的地址（改变堆内存地址的指向），引用原来指向的对象没有变化，等待JVM回收<br>所以函数的参数传递对于基本类型变量而言，其内部操作对变量毫无影响，因为操作它的副本。而传递引用就是传递一个地址，函数分配了新的空间存储地址的副本，如果调用了改变对象的函数，比如StringBuffer的append()，就会改变外部对象，而如果仅仅是重新赋值之类的操作，对外部对象毫无影响，因为赋值也只是赋地址的值。<br><strong> 所以，swap是一般来说是不可能实现的，除非使用一些特殊的技巧，比如用数组，这是通过引用改变基本数据类型变量。 </strong></p>
+<h3 id="引用传递example"><a href="#引用传递example" class="headerlink" title="引用传递example"></a>引用传递example</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Refer</span></span>&#123;</span><br><span class="line">    String s=<span class="string">"A string"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String s1=<span class="string">"String in main"</span>;</span><br><span class="line">        modify(s1);</span><br><span class="line">        System.out.println(s1);</span><br><span class="line">        Refer r=<span class="keyword">new</span> Refer();</span><br><span class="line">        modify(r);</span><br><span class="line">        System.out.println(r.s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">private</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        s=<span class="string">"new String"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">private</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">(Refer r)</span></span>&#123;</span><br><span class="line">        r.s=<span class="string">"new String"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一个modify改变引用副本的指向，函数结束以后副本销毁，改变对外部没有影响；<br>第二个modify改变了引用的成员的引用指向，引用r的指向没有改变，就可以通过r访问改变后的s。<br><img src="attachment:javalearn.png" alt="javalearn.png"></p>
+<hr>
+<h2 id="数组初始化"><a href="#数组初始化" class="headerlink" title="数组初始化"></a>数组初始化</h2><p>数组初始化以后所有元素的初始值为类型默认值。</p>
+<h3 id="静态初始化"><a href="#静态初始化" class="headerlink" title="静态初始化"></a>静态初始化</h3><p>使用列表指定数组每个元素的具体值和数组长度。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] array=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="动态初始化"><a href="#动态初始化" class="headerlink" title="动态初始化"></a>动态初始化</h3><p>使用new来在堆上开辟空间，要指定数组的长度（就是要在堆上申请多少空间）<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] array=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">20</span>];</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="String-StringBuffer-StringBuilder"><a href="#String-StringBuffer-StringBuilder" class="headerlink" title="String StringBuffer StringBuilder"></a>String StringBuffer StringBuilder</h2><h3 id="实例化"><a href="#实例化" class="headerlink" title="实例化"></a>实例化</h3><p>可以直接赋字符串，也可以<code>new String(&quot;abc&quot;)</code>。使用new会先在堆为字符串“abc”申请内存，然后执行new的操作，再申请一块内存存储“abc”，所以new这种方法相对来说效率会低一点，第一块内存是无用的，引用指向第二块（也就是new的那一块内存）。<br><code>StringBuffer</code> 和 <code>StringBuilder</code>都是操作类，必须实例化化才能操作。 </p>
+<h3 id="更改对象内容"><a href="#更改对象内容" class="headerlink" title="更改对象内容"></a>更改对象内容</h3><p><code>String</code>引用的对象不可更改，<code>replace()</code>等看起来修改内容的方法实际上是开辟新的内存存储更改后的字符串，返回新字符串的引用，对象本身没有更改<br><code>StringBuffer</code> 和 <code>StringBuilder</code>的一些写方法修改对象本身</p>
+<h3 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h3><p><code>StringBuffer</code>线程安全的，也就是说对对象的写操作是原子操作。<br><code>StringBuilder</code>线程不安全，适用于单线程的场景。</p>
+<h3 id="速度"><a href="#速度" class="headerlink" title="速度"></a>速度</h3><p><code>StringBuilder</code>&gt;<code>StringBuffer</code>&gt;<code>String</code></p>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ol>
+<li><code>String</code> 字符串不经常变化</li>
+<li><code>StringBuffer</code> 多线程环境（XML解析、Http参数解析和封装），频繁进行字符串运算</li>
+<li><code>StringBuilder</code> 单线程环境（SQL语句拼接，JSON封装），频繁进行字符串运算</li>
+</ol>
+<hr>
+<h2 id="方法使用throws抛出异常"><a href="#方法使用throws抛出异常" class="headerlink" title="方法使用throws抛出异常"></a>方法使用throws抛出异常</h2><p>目的是让方法调用者处理异常，主方法抛出的异常由jvm处理。</p>
+<hr>
+<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2><p>返回值不能区分重载方法！<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">method</span><span class="params">()</span></span>&#123;...&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">method</span><span class="params">()</span></span>&#123;...&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这不是重载方法，这是错误写法。<strong> 重载是方法名相同，参数类型和个数不同，通过传递不同类型和个数的参数完成不同功能。</strong></p>
+<hr>
+<h2 id="面向对象三大特征"><a href="#面向对象三大特征" class="headerlink" title="面向对象三大特征"></a>面向对象三大特征</h2><h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>目的：类内的细节对外部不可见<br>实现：方法或对象使用private声明，使用get() set()接口进行访问（可使用IDE快捷键构造）</p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>扩展父类的功能</p>
+<ul>
+<li>泛化：把抽象类具体化</li>
+<li>聚合：把一些类抽象化（抽象类，接口）</li>
+</ul>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><ul>
+<li>重载：同一类中同名方法实现不同功能</li>
+<li>重写：实现接口或抽象类中的抽象方法或是重定义基类方法<br>对象的多态（用某一个类的引用操作不同类）<br>上转型和下转型：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Father is base class, Son is subclass</span></span><br><span class="line">Father f=<span class="keyword">new</span> Son(); <span class="comment">//父类引用指向子类，向上转型，隐式转换</span></span><br><span class="line">Son s=(Son) f; <span class="comment">//向下转型，显示转换</span></span><br><span class="line">Father f1=<span class="keyword">new</span> Father();</span><br><span class="line">Son s1=(Son) f1; <span class="comment">//错误，无法完成转型，无法把抽象一点的对象具体化，信息不足</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="匿名对象"><a href="#匿名对象" class="headerlink" title="匿名对象"></a>匿名对象</h2><p>只使用一次，不需要在栈开辟引用的空间，对于没有引用的对象，GC很快就回收。</p>
+<hr>
+<h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><p>静态属性/方法：表示类的共同属性/方法，就是所有对象都有的属性/方法。可通过类名或者对象调用，并且在对象实例化之前执行，与语序无关。<br>静态属性/方法不能调用非静态方法/属性，因为静态方法/属性是属于类的，而非静态方法/属性是绑定在对象的，非静态方法/属性在类没有实例化之前是不会装载的，因此也无法调用；而静态方法/属性在首次加载类的时候就已经装在在内存中。<br>静态方法不能访问泛型（因为在初始化静态方法时不一定能绑定泛型类型）</p>
+<hr>
+<h2 id="protected"><a href="#protected" class="headerlink" title="protected"></a>protected</h2><p>继承访问权限。被protected修饰的方法和属性只有通过继承才能被访问。<strong> protected 包含了default的的权限，所以在同一个包中，protected可以当作default来看 </strong><br>不同包中会有一些复杂的情况：</p>
+<h3 id="非静态protected"><a href="#非静态protected" class="headerlink" title="非静态protected"></a>非静态protected</h3><ol>
+<li>子类通过父类引用不可以访问protected方法</li>
+<li>子类通过子类的引用可以访问protected方法</li>
+<li>子类通过另一个继承了共同基类的子类引用也不能访问基类的protected方法<h3 id="静态protected"><a href="#静态protected" class="headerlink" title="静态protected"></a>静态protected</h3>不论在不在同一个包子类都可以访问（通过类名、引用）</li>
+</ol>
+<hr>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p>使用abstract修饰的类，可以有抽象方法也可以没有。抽象方法必须由子类重写，因此不能用private修饰（private修饰表示仅自己拥有的方法和属性）。抽象类不能直接实例化。</p>
+<hr>
+<h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><ul>
+<li>修饰类：不能被继承</li>
+<li>修饰方法：不能被重写</li>
+<li>修饰变量：表示不可写的常量</li>
+</ul>
+<hr>
+<h2 id="重写和重载"><a href="#重写和重载" class="headerlink" title="重写和重载"></a>重写和重载</h2><p>重写和重载对比</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">对比项</th>
+<th style="text-align:center">重写</th>
+<th style="text-align:center">重载</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">定义</td>
+<td style="text-align:center">方法名称、参数个数及类型、返回值都要相同</td>
+<td style="text-align:center">方法名、返回值相同，参数类型个数不同</td>
+</tr>
+<tr>
+<td style="text-align:center">权限</td>
+<td style="text-align:center">重写方法的权限不能比基类权限更严格</td>
+<td style="text-align:center">权限无要求</td>
+</tr>
+<tr>
+<td style="text-align:center">范围</td>
+<td style="text-align:center">继承中发生</td>
+<td style="text-align:center">同一个类中发生</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ul>
+<li>属性必须由<code>public final static</code>修饰（全局静态常量），可省略修饰</li>
+<li>方法必须由<code>public abstrct</code>修饰</li>
+<li>支持多继承（一个子类可以实现多个接口，一个接口可以继承多个接口）</li>
+</ul>
+<hr>
+<h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        Father a=<span class="keyword">new</span> Son(); <span class="comment">//上转型</span></span><br><span class="line">        System.out.println(a <span class="keyword">instanceof</span> Father); <span class="comment">//true</span></span><br><span class="line">        System.out.println(a <span class="keyword">instanceof</span> Son); <span class="comment">//true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>子类实例是父类的实例，无论引用是什么类型</p>
+<hr>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>JDK1.5之后才有<br>类模板，是另一个维度的抽象<br>可使用多个泛型<br>通配符：在使用泛型类的时候还不能确定类型的时候填入？<br>可用于定义泛型接口、泛型方法（参数或返回值都可以是泛型）、泛型数组（与泛型方法搭配使用）</p>
+<hr>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p><code>java HelloWorld</code>实际上是这样执行的：<br><img src="attachment:java%E5%88%9D%E5%A7%8B%E5%8C%96.png" alt="java%E5%88%9D%E5%A7%8B%E5%8C%96.png"></p>
+<hr>
+<h2 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h2><p>把方法调用和方法所在的类关联起来就是绑定。</p>
+<h3 id="静态绑定-前期绑定"><a href="#静态绑定-前期绑定" class="headerlink" title="静态绑定/前期绑定"></a>静态绑定/前期绑定</h3><p>使用final、static、private修饰的方法和构造方法是静态绑定的，就是在运行前就知道应该调用什么方法。  </p>
+<ul>
+<li>final方法能继承，不能被覆盖（重写）</li>
+<li>static 方法与类绑定，是属于某一个特定的类的，可被继承，但如果子类重写了方法就有限调用子类重写的static方法，这仍然是前期绑定，因为编译器加载类的时候就知道应该绑定那个类的方法。</li>
+<li>private方法不能被继承，属于某一个特定的类，只能通过类的实例去调用，而且引用必须是严格的这一个类的类型，不能使用基类引用调用，所以不存在动态绑定</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String ba=<span class="string">"base String"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">Base</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getString</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"test String"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Base t=<span class="keyword">new</span> Test();</span><br><span class="line">        <span class="comment">//System.out.println(t.getString()); //错误，必须强制转型才能访问</span></span><br><span class="line">        System.out.println(((Test) t).getString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="动态绑定-后期绑定"><a href="#动态绑定-后期绑定" class="headerlink" title="动态绑定/后期绑定"></a>动态绑定/后期绑定</h3><p>运行时根据具体的对象进行绑定，<strong> 消息发给对象，让对象自己决定用什么方法，这样就可以只编写与基类打交道的代码</strong></p>
+<h2 id="Collection-Interface"><a href="#Collection-Interface" class="headerlink" title="Collection Interface"></a>Collection Interface</h2><p>接口主要定义动态对象数组，实现高性能地扩展和修改对象数组</p>
+<ul>
+<li><p>List 接口：有序对象，可重复</p>
+<ul>
+<li>LinkedList 类：大量增删操作</li>
+<li>ArrayList 类：随机访问，非线程安全，异步，性能高</li>
+<li>Vector 类：随机访问，线程安全，同步，性能低</li>
+</ul>
+</li>
+<li><p>Set 接口：不允许重复对象</p>
+<ul>
+<li>HashSet 类：提供最快的查询速度（<code>contains(Object o)</code>），元素无序，没有<code>get()</code>，线程不安全。<ul>
+<li>LinkedHashSet 类：插入顺序保存元素</li>
+</ul>
+</li>
+<li>SortSet 类：可排序集合，按数字（字典序）升序排列元素<ul>
+<li>TreeSet 类：二叉树排序存放元素，效率高</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Queue 接口</li>
+<li>Map 接口：对象到对象的映射<ul>
+<li>HashTable 类：线程安全</li>
+<li>HashMap 类：线程不安全，允许null key和null value，有<code>containsKey()</code>和<code>containsValue()</code><ul>
+<li>LinkedHashMap 类：保持元素插入顺序的哈希映射</li>
+</ul>
+</li>
+<li>TreeMap 类：保证按key排序的映射</li>
+</ul>
+</li>
+</ul>
+<p>指定排序规则：</p>
+<ol>
+<li>实现java.util包下的Comparator接口</li>
+<li>实现java.lang包下的Comparable接口</li>
+</ol>
+<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">File f=<span class="keyword">new</span> File(<span class="string">"test.txt"</span>);</span><br><span class="line"><span class="keyword">if</span>(f.exists())&#123;</span><br><span class="line">    System.out.println(<span class="string">"File exsits"</span>);</span><br><span class="line">    <span class="comment">//f.delete(); //删除文件</span></span><br><span class="line">    <span class="comment">// System.out.println("File deleted");</span></span><br><span class="line">    File nameto=<span class="keyword">new</span> File(<span class="string">"newTest.txt"</span>);</span><br><span class="line">    f.renameTo(nameto); <span class="comment">//重命名</span></span><br><span class="line">    System.out.println(<span class="string">"File renamed"</span>);</span><br><span class="line">    f.isDirectory(); <span class="comment">//判断是否目录</span></span><br><span class="line">    f.isFile(); <span class="comment">//判断是否文件</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"File not exists"</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        f.createNewFile(); <span class="comment">//创建文件，需要捕捉IO异常</span></span><br><span class="line">        System.out.println(<span class="string">"File created"</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//移动文件/目录</span></span><br><span class="line"><span class="comment">//同分区的只需要rename就可以</span></span><br><span class="line"><span class="comment">//不同分区的需要拷贝文件</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>getName()</code> 获取文件名称。即使文件不存在也能获取，只要new了文件对象</li>
+<li><code>getPath()</code> 获取文件相对路径</li>
+<li><code>getAbsolutePath()</code> 获取文件绝对路径</li>
+<li><code>getParent()</code> 获取创建文件引用时的父级路径，如果没有指定父级路径则返回null</li>
+<li><code>length()</code> 返回文件字节数，是一个长整型</li>
+<li><code>canRead()</code> 判断是否可读</li>
+<li><code>canWrite()</code> 判断是否可写</li>
+</ul>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">File folder=<span class="keyword">new</span> File(<span class="string">"testFolder"</span>);</span><br><span class="line"><span class="keyword">if</span>(folder.mkdirs())&#123;  <span class="comment">//创建目录</span></span><br><span class="line">    System.out.println(<span class="string">"Folder create successfully"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(folder.exists())&#123;</span><br><span class="line">        System.out.println(<span class="string">"Folder exists"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Folder could not be created"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(folder.delete()) <span class="comment">//只能删除空目录（不包含任何文件/目录的目录）</span></span><br><span class="line">    System.out.println(<span class="string">"folder deleted"</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    System.out.println(<span class="string">"folder must be empty"</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//遍历文件夹</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TraversalFolder</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        File f=<span class="keyword">new</span> File(<span class="string">"P:/javase"</span>);</span><br><span class="line">        printFiles(f,<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printFiles</span><span class="params">(File folder, <span class="keyword">int</span> tabs)</span></span>&#123;</span><br><span class="line">        File FileList[]=folder.listFiles();</span><br><span class="line">        <span class="keyword">for</span> (File file:FileList) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tabs;i++)</span><br><span class="line">                System.out.print(<span class="string">"---"</span>);</span><br><span class="line">            System.out.println(file.getName());</span><br><span class="line">            <span class="keyword">if</span>(file.isDirectory())</span><br><span class="line">                printFiles(file,tabs+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h2><p>分类</p>
+<ul>
+<li>数据走向：输入流 输出流</li>
+<li>处理数据类型：字节流 字符流</li>
+</ul>
+<p>字节流</p>
+<ul>
+<li>以stream结尾，处理所有类型的数据，读一个字节返回一个字节</li>
+<li>字节流的方法为<code>read(byte[])</code> <code>write(byte[])</code></li>
+</ul>
+<p>字符流</p>
+<ul>
+<li>以Reader/Writer结尾，读一个或多个字节，先查找指定编码表再返回查到的字符</li>
+<li>字符流包装字节流，读取到char数组里面，<code>read(char[])</code> <code>write(char[])</code></li>
+</ul>
+<p>使用缓冲类进行包装</p>
+<ul>
+<li>减少磁盘读写，提高速度，延长硬盘寿命</li>
+<li>程序的读写操作实际上是对缓冲区操作</li>
+<li>比不使用包装快得多</li>
+</ul>
+<p>优化读取文件速度</p>
+<ul>
+<li>根据文件大小调整缓冲区大小以及程序中字节数组大小</li>
+</ul>
+<p>new FileReader() 等价于 new InputStreamReader(new FileInputStream())<br>new FileWriter() 等价于 new OutputStreamWriter(new FileOutputStream())</p>
+<p>随机读写文件：<code>RandomAccessFile</code>类，是一个字节流</p>
+<ul>
+<li>使用<code>seek()</code>定位字节，然后读<code>read(byte[])</code>或者写<code>writeBytes()</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用字节流读取和输出文件内容</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CopyFile1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        copyFile(<span class="string">"newTest.txt"</span>,<span class="string">"NewText.txt"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copyFile</span><span class="params">(String fileName1, String fileName2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            FileInputStream fis = <span class="keyword">new</span> FileInputStream(fileName1);</span><br><span class="line">            FileOutputStream fos=<span class="keyword">new</span> FileOutputStream(fileName2);</span><br><span class="line">            BufferedInputStream bis=<span class="keyword">new</span> BufferedInputStream(fis);</span><br><span class="line">            BufferedOutputStream bos=<span class="keyword">new</span> BufferedOutputStream(fos);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">byte</span> buffer[]=<span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">100</span>];</span><br><span class="line">            <span class="keyword">while</span>(bis.read(buffer)!=-<span class="number">1</span>)&#123;</span><br><span class="line">                bos.write(buffer);</span><br><span class="line">            &#125;</span><br><span class="line">            bos.close();</span><br><span class="line">            bis.close();</span><br><span class="line">            fos.close();</span><br><span class="line">            fis.close();</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用字符流读取和输出文件内容</span></span><br><span class="line"><span class="comment">//注意！设置l表示读取字符的个数，读多少写多少，如果直接把整个input数组写入，则有可能写入缓冲区的残留的字符</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CopyFile2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        copyFile(<span class="string">"newTest.txt"</span>,<span class="string">"NewText.txt"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copyFile</span><span class="params">(String fileName1,String fileName2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            FileInputStream fis=<span class="keyword">new</span> FileInputStream(fileName1);</span><br><span class="line">            FileOutputStream fos=<span class="keyword">new</span> FileOutputStream(fileName2);</span><br><span class="line">            InputStreamReader isr=<span class="keyword">new</span> InputStreamReader(fis,<span class="string">"UTF-8"</span>);</span><br><span class="line">            OutputStreamWriter osr=<span class="keyword">new</span> OutputStreamWriter(fos,<span class="string">"UTF-8"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">char</span> input[]=<span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">100</span>];</span><br><span class="line">            <span class="keyword">int</span> l=<span class="number">0</span>; <span class="comment">//记录字符读取个数</span></span><br><span class="line">            <span class="keyword">while</span>((l=isr.read(input))!=-<span class="number">1</span>)&#123;</span><br><span class="line">                osr.write(input,<span class="number">0</span>,l); <span class="comment">//写文件的引用，偏移量0，写入长度为l</span></span><br><span class="line">            &#125;</span><br><span class="line">            osr.close();</span><br><span class="line">            isr.close();</span><br><span class="line">            fos.close();</span><br><span class="line">            fis.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//使用缓冲字符流输入输出字符</span></span><br><span class="line"><span class="comment">//注意要flush缓冲区，否则会有残留的数据留在缓冲区</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CopyFile3</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        copyFile(<span class="string">"newTest.txt"</span>,<span class="string">"NewText.txt"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copyFile</span><span class="params">(String fileName1,String fileName2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            FileInputStream fis=<span class="keyword">new</span> FileInputStream(fileName1);</span><br><span class="line">            FileOutputStream fos=<span class="keyword">new</span> FileOutputStream(fileName2);</span><br><span class="line">            InputStreamReader isr=<span class="keyword">new</span> InputStreamReader(fis,<span class="string">"UTF-8"</span>);</span><br><span class="line">            OutputStreamWriter osw=<span class="keyword">new</span> OutputStreamWriter(fos,<span class="string">"UTF-8"</span>);</span><br><span class="line"></span><br><span class="line">            BufferedReader br=<span class="keyword">new</span> BufferedReader(isr);</span><br><span class="line"><span class="comment">//            BufferedWriter bw=new BufferedWriter(osw);</span></span><br><span class="line">            PrintWriter pw=<span class="keyword">new</span> PrintWriter(osw,<span class="keyword">true</span>); <span class="comment">//printwriter对象自动刷新缓冲区</span></span><br><span class="line"></span><br><span class="line">            String s;</span><br><span class="line">            <span class="keyword">while</span>((s=br.readLine())!=<span class="keyword">null</span>)&#123;</span><br><span class="line"><span class="comment">//                bw.write(s); //写入不包括换行符</span></span><br><span class="line">                pw.println(s); <span class="comment">//写入包括换行符</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//            bw.flush(); //清空缓冲区</span></span><br><span class="line"><span class="comment">//            bw.close();</span></span><br><span class="line">            br.close();</span><br><span class="line">            osw.close();</span><br><span class="line">            isr.close();</span><br><span class="line">            fos.close();</span><br><span class="line">            fis.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><ol>
+<li>继承<code>thread</code>类，实现<code>run()</code>方法</li>
+<li>实现<code>runnable</code>接口，实现<code>run()</code>方法，再使用<code>Thread</code>引用实例化类  </li>
+</ol>
+<p>使用<code>start()</code>启动线程，不要直接调用<code>run()</code>方法</p>
+<h3 id="线程操作状态"><a href="#线程操作状态" class="headerlink" title="线程操作状态"></a>线程操作状态</h3><ul>
+<li>创建：准备好了一个多线程对象</li>
+<li>就绪：调用start()等待CPU调度</li>
+<li>运行：执行run()</li>
+<li>阻塞：暂时停止执行，将资源交给其它线程使用</li>
+<li>终止：线程销毁</li>
+</ul>
+<h4 id="判断线程状态"><a href="#判断线程状态" class="headerlink" title="判断线程状态"></a>判断线程状态</h4><ul>
+<li><code>isAlive()</code>判断线程是否启动</li>
+<li><code>join()</code>强行运行</li>
+<li><code>sleep()</code>休眠</li>
+<li><code>yield()</code>礼让</li>
+</ul>
+<h3 id="线程的优先级：影响线程的执行顺序"><a href="#线程的优先级：影响线程的执行顺序" class="headerlink" title="线程的优先级：影响线程的执行顺序"></a>线程的优先级：影响线程的执行顺序</h3><p>提高线程抢到CPU资源的可能性<br>通过<code>setPriority()</code>设置，下面的常数是Thread类的静态常量</p>
+<ul>
+<li><strong> <code>MIN_PRIORITY</code> </strong>  </li>
+<li><strong> <code>MAX_PRIORITY</code> </strong> : 默认。</li>
+<li><strong> <code>NORM_PRIORITY</code> </strong></li>
+</ul>
+<h3 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h3><p>使用<code>synchronized(对象){}</code>修饰方法/块，资源共享的时候使用同步</p>
+  	
+					
+	  </div>     
+	  
+
+	<div class="post-footer">
+
+
+  <div class="post-footer-other">
+    
+      <span class="post-footer-item">
+        
+
+
+<span class="donate-btn">
+	<span class="iconfont icon-donate"></span>
+</span>
+
+<div id="donate-box" class="sildeUpMin">
+
+	<span class="donate-cancel iconfont icon-cancel"></span>
+
+	<div class="donate-img-box">
+		<img id="donate-qr-wechat" class="noLazyLoad donate-img" src="/images/donate1.png" alt="No Donate Image!">	
+		<img id="donate-qr-alipay" class="noLazyLoad donate-img" src="/images/donate2.png" alt="No Donate Image!">	
+	</div>
+
+	<span class="donate-word">世界美好 你也是</span>
+
+	<div class="donate-list">
+		<span class="iconfont icon-donate-wechat"></span>
+		<span class="iconfont icon-donate-alipay"></span>
+	</div>
+
+</div>
+ 
+      </span>        
+       
+    
+      <span class="post-footer-item">
+        <span class="share-btn">
+	<span class="iconfont icon-share"></span>
+</span>
+<div class="-mob-share sildeUpMin">
+	<ul class="-mob-inner">
+	   			             
+        <li class="iconfont 
+		icon-share-qq 
+		-mob-share-qq 
+		-mob-share-link"></li>		
+   	   			             
+        <li class="iconfont 
+		icon-share-weixin 
+		-mob-share-weixin 
+		-mob-share-link"></li>		
+   	   			             
+        <li class="iconfont 
+		icon-share-weibo 
+		-mob-share-weibo 
+		-mob-share-link"></li>		
+   	   			             
+        <li class="iconfont 
+		icon-share-douban 
+		-mob-share-douban 
+		-mob-share-link"></li>		
+   	   			             
+        <li class="iconfont 
+		icon-share-facebook 
+		-mob-share-facebook 
+		-mob-share-link"></li>		
+   	   			             
+        <li class="iconfont 
+		icon-share-twitter 
+		-mob-share-twitter 
+		-mob-share-link"></li>		
+   	   			             
+        <li class="iconfont 
+		icon-share-google 
+		-mob-share-google 
+		-mob-share-link"></li>		
+   	   
+	</ul>
+</div>	
+
+
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=21d601593a1de"></script>
+      </span>  
+               
+  </div>  
+    
+
+
+  <div class="post-footer-meta">
+        	
+
+        
+          <i class="iconfont icon-tag"></i>     
+            <a class="tag-link" href="/tags/java/">java</a>    
+        	
+  </div>
+
+</div>
+
+
+<nav class="post-footer-nav">
+  <div class="post-footer-link">
+  
+      <a href="/2018/12/04/z3逻辑推理/" id="post-nav-older" class="post-nav-link-wrap">
+        <strong class="post-nav-caption">older</strong>
+        
+          <a class="post-nav-title" href="/2018/12/04/z3逻辑推理/">
+          z3逻辑推理</a>
+      </a>
+  
+  </div>
+  <div class="post-footer-link">
+    
+  </div>
+
+</nav>
+ 
+	
+	
+</article>
+
+	<div class="toc-container">
+			<div class="toc-sidebar">
+			<p class="toc-title">
+				CONTENT
+			</p>
+			<div class="toc-list">
+				<ol class="toc-inner"><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#java变量定义作用域"><span class="toc-inner-text">java变量定义作用域</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#保留小数点后n位的计算"><span class="toc-inner-text">保留小数点后n位的计算</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#数据类型"><span class="toc-inner-text">数据类型</span></a><ol class="toc-inner-child"><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#基本数据类型"><span class="toc-inner-text">基本数据类型</span></a><ol class="toc-inner-child"><li class="toc-inner-item toc-inner-level-5"><a class="toc-inner-link" href="#int"><span class="toc-inner-text">int</span></a></li><li class="toc-inner-item toc-inner-level-5"><a class="toc-inner-link" href="#char"><span class="toc-inner-text">char</span></a></li><li class="toc-inner-item toc-inner-level-5"><a class="toc-inner-link" href="#float-amp-double"><span class="toc-inner-text">float &amp; double</span></a></li></ol></li><li class="toc-inner-item toc-inner-level-4"><a class="toc-inner-link" href="#栈空间"><span class="toc-inner-text">栈空间</span></a></li></ol></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#引用数据类型、自定义类型"><span class="toc-inner-text">引用数据类型、自定义类型</span></a><ol class="toc-inner-child"><li class="toc-inner-item toc-inner-level-4"><a class="toc-inner-link" href="#堆空间"><span class="toc-inner-text">堆空间</span></a></li></ol></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#包装类"><span class="toc-inner-text">包装类</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#类型转换"><span class="toc-inner-text">类型转换</span></a></li></ol><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#控制台接收数据"><span class="toc-inner-text">控制台接收数据</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#实现swap？"><span class="toc-inner-text">实现swap？</span></a><ol class="toc-inner-child"><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#引用传递example"><span class="toc-inner-text">引用传递example</span></a></li></ol></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#数组初始化"><span class="toc-inner-text">数组初始化</span></a><ol class="toc-inner-child"><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#静态初始化"><span class="toc-inner-text">静态初始化</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#动态初始化"><span class="toc-inner-text">动态初始化</span></a></li></ol></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#String-StringBuffer-StringBuilder"><span class="toc-inner-text">String StringBuffer StringBuilder</span></a><ol class="toc-inner-child"><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#实例化"><span class="toc-inner-text">实例化</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#更改对象内容"><span class="toc-inner-text">更改对象内容</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#线程安全"><span class="toc-inner-text">线程安全</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#速度"><span class="toc-inner-text">速度</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#适用场景"><span class="toc-inner-text">适用场景</span></a></li></ol></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#方法使用throws抛出异常"><span class="toc-inner-text">方法使用throws抛出异常</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#方法重载"><span class="toc-inner-text">方法重载</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#面向对象三大特征"><span class="toc-inner-text">面向对象三大特征</span></a><ol class="toc-inner-child"><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#封装"><span class="toc-inner-text">封装</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#继承"><span class="toc-inner-text">继承</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#多态"><span class="toc-inner-text">多态</span></a></li></ol></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#匿名对象"><span class="toc-inner-text">匿名对象</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#static"><span class="toc-inner-text">static</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#protected"><span class="toc-inner-text">protected</span></a><ol class="toc-inner-child"><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#非静态protected"><span class="toc-inner-text">非静态protected</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#静态protected"><span class="toc-inner-text">静态protected</span></a></li></ol></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#抽象类"><span class="toc-inner-text">抽象类</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#final"><span class="toc-inner-text">final</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#重写和重载"><span class="toc-inner-text">重写和重载</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#接口"><span class="toc-inner-text">接口</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#instanceof"><span class="toc-inner-text">instanceof</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#泛型"><span class="toc-inner-text">泛型</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#初始化"><span class="toc-inner-text">初始化</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#绑定"><span class="toc-inner-text">绑定</span></a><ol class="toc-inner-child"><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#静态绑定-前期绑定"><span class="toc-inner-text">静态绑定/前期绑定</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#动态绑定-后期绑定"><span class="toc-inner-text">动态绑定/后期绑定</span></a></li></ol></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#Collection-Interface"><span class="toc-inner-text">Collection Interface</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#文件"><span class="toc-inner-text">文件</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#目录"><span class="toc-inner-text">目录</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#IO"><span class="toc-inner-text">IO</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#多线程"><span class="toc-inner-text">多线程</span></a><ol class="toc-inner-child"><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#线程操作状态"><span class="toc-inner-text">线程操作状态</span></a><ol class="toc-inner-child"><li class="toc-inner-item toc-inner-level-4"><a class="toc-inner-link" href="#判断线程状态"><span class="toc-inner-text">判断线程状态</span></a></li></ol></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#线程的优先级：影响线程的执行顺序"><span class="toc-inner-text">线程的优先级：影响线程的执行顺序</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#线程同步"><span class="toc-inner-text">线程同步</span></a></li></ol></li>
+			</div>
+		</div>
+	</div>
+
+          </div> 
+      </div>            
+    
+    <a id="page-backTop">
+      <span>
+        <i class="iconfont icon-backtotop"></i>
+      </span>
+    </a> 
+
+  
+    
+    <div class="search-container sildeUpMin">
+        <div class="search-header">
+            <input type="text" placeholder="输入你想搜索的" id="search-input" class="search-input">
+            <span class="search-cancel">
+                <i class="iconfont icon-cancel">
+            </i></span>
+        </div>
+        <div id="search-result" class="search-result"></div>
+    </div>
+ 
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon lazyload" src="/images/placeholder.png" data-src="/images/favicon.png">   
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">首页
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">归档
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">标签
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">关于
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">搜索 </a>                 
+            
+         
+      
+</div>        
+    
+
+
+
+     
+    
+
+
+
+
+<footer id="footer">	    
+
+		
+		<div class="footer-copyright">
+		&copy;
+		
+		2018		
+	
+		lyyao
+		<br>
+
+		Theme  <a href="https://github.com/Lemonreds/hexo-theme-Nayo" target="_blank">Nayo</a>
+		</div>			
+	 
+</footer>   
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
+</html>
